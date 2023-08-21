@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+    <div id="meu amor" style="transition: opacity 1s ease-in-out; opacity: 0;"></div>
+
+</body>
+<script>
+
+    function carregarDiv() {
+        let div = document.getElementById("meu amor")
+        if(div.innerHTML === '' || div.style.opacity == 0){
+            div.innerHTML = `<h1>Guinness</h1>`;
+            div.style.opacity = 1;
+        }else{
+            div.style.opacity = 0;
+        }
+    }
+
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", carregarDiv)
+
+</script>
+
+</html>

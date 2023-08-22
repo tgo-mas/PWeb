@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        td {
+            width: 200px;
+            margin: 5px auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            background-color: #ddd;
+        }
+
+        #botaoOrdenar, #botaoEmbaralhar{
+            display: none;
+        }
+
+        button{
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="meu amor">
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+
+    <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
+    <button id="botaoEmbaralhar">Embaralhar cervejas</button>
+
+</body>
+
+<script>
+    
+    let botaoOrd = document.getElementById("botaoOrdenar");
+    let botaoEmb = document.getElementById("botaoEmbaralhar");
+
+    let cervejas = ["Guiness", "Desperados", "Becks", "Heineken", "Caracu", "Eisenbahn"];
+
+    function transformar(item) {
+        return `<tr><td>${item}</td></tr>`;
+    }
+
+    function ordenar(){
+        cervejas = cervejas.sort();
+        carregarTable();
+        botaoEmb.style.display = "block";
+        botaoOrd.style.display = "none";
+    }
+
+    function embaralhar(){
+        for(let i = cervejas.length - 1; i>0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            [cervejas[i], cervejas[j]] = [cervejas[j], cervejas[i]];
+        }
+        carregarTable();
+        botaoEmb.style.display = "none";
+        botaoOrd.style.display = "block";
+    }
+
+    function carregarTable() {
+        let div = document.getElementById("meu amor");
+
+        //let cervejasHtml = [`<h1>${cervejas[0]}</h1>`,`<h1>${cervejas[1]}</h1>`, `<h1>${cervejas[2]}</h1>`] 
+
+        let cervejasHtml = cervejas.map(transformar);
+        div.innerHTML = `<table>
+            <thead>
+                <tr>
+                    <th>Cerveja</th>
+                </tr>
+            </thead>
+            <tbody>${cervejasHtml.join("\n")}</tbody>
+        </table>`;
+        botaoOrd.style.display = "block";
+    }
+
+    let botao = document.getElementById("botaoCarregar");
+    botao.addEventListener("click", carregarTable);  
+    botaoOrd.addEventListener("click", ordenar);      
+    botaoEmb.addEventListener("click", embaralhar);      
+</script>
+
+</html>

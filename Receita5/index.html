@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        td {
+            width: 200px;
+            margin: 5px auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            background-color: #ddd;
+        }
+
+        #botaoOrdenar, #botaoEmbaralhar{
+            display: none;
+        }
+
+        a{
+            margin: 10px;
+            text-decoration: none;
+            color: #555;
+            transition: 0.3s ease;
+        }
+
+        a:hover{
+            color: #000;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <a href="#" id="botaoCarregar">Carregando cervejas...</a>  
+    <a href="#" id="botaoOrdenar">Ordenar cervejas</a>
+    <a href="#" id="botaoEmbaralhar">Embaralhar cervejas</a>
+    <div id="meu amor"></div>
+
+</body>
+
+<script>
+
+    let botaoOrd = document.getElementById("botaoOrdenar");
+    let botaoEmb = document.getElementById("botaoEmbaralhar");
+
+    let cervejas = ["Guiness", "Desperados", "Becks", "Eisenbahn", "Heineken", "Caracu", "Devassa", "Skol"];
+
+    const ordenar = () => {
+        let cervs = cervejas.sort();
+        carregarTable(cervs);
+        botaoEmb.style.display = "block";
+        botaoOrd.style.display = "none";
+    }
+
+    const embaralhar = () => {
+        let cervs = cervejas;
+        for(let i = cervejas.length - 1; i>0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            [cervs[i], cervs[j]] = [cervs[j], cervs[i]];
+        }
+        carregarTable(cervs);
+        botaoEmb.style.display = "none";
+        botaoOrd.style.display = "block";
+    }
+
+    const carregarTable = (cervs) => {
+        const div = document.getElementById("meu amor");
+        const cervejasHtml = cervs.map(item => `<tr><td>${item}</td></tr>`);
+        div.innerHTML = `<table>
+            <thead>
+                <tr><th>Nome</th><th>
+            </thead>
+            <tbody>
+                ${cervejasHtml.join("\n")}
+            </tbody>
+        </table>`;
+        botaoOrd.style.display = "block";
+    }
+
+    let botao = document.getElementById("botaoCarregar");
+    botao.addEventListener("click", () =>  carregarTable(cervejas));
+    botaoOrd.addEventListener("click", ordenar);      
+    botaoEmb.addEventListener("click", embaralhar);
+
+</script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table *{
+            padding: 10px;
+            text-align: start;
+        }
+
+        table{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border: 1px solid black;
+            width: 400px;
+            box-shadow: 3px 3px 3px #0004;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        #botaoCarregar{
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #aaa;
+            border: 1px solid #888;
+            transform: translate(10, 10, 10);
+            transition: 0.5s ease;
+        }
+
+        #botaoCarregar:hover{
+            background-color: #888;
+            cursor: pointer;
+        }
+
+        #botaoCarregar:active{
+            transform: translate(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cervejasDiv"></div>
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+</body>
+
+<script>
+
+    let cervejas = [
+        {
+            name: "Guiness",
+            alcohol: "10%",
+            style: "Red Ale",
+            ibu: "20"
+        },
+        {
+            name: "Desperados",
+            alcohol: "6%",
+            style: "English IPA",
+            ibu: "50"
+        },
+        {
+            name: "Becks",
+            alcohol: "5%",
+            style: "Imperial Scout",
+            ibu: "46"
+        },
+        {
+            name: "Heineken",
+            alcohol: "6%",
+            style: "Cream Ale",
+            ibu: "51"
+        },
+        {
+            name: "Eisenbahn",
+            alcohol: "8%",
+            style: "Lager",
+            ibu: "30"
+        }
+    ]
+
+    //cs é um array de cervejas
+    const carregarDiv = (cs, id = "cervejasDiv", cabs = ["Nome", "Álcool", "Estilo", "Amargor"], props = ["name", "alcohol", "style", "ibu"]) => {
+        const div = document.getElementById(id)
+        const itensHtml = cs.map(item => `<tr><td>${item[props[0]]}</td><td>${item[props[1]]}</td><td>${item[props[2]]}</td><td>${item[props[3]]}</td></tr>`)
+        div.innerHTML = `<table>
+        <thead>
+            <tr>
+                <th>${cabs[0]}</th>
+                <th>${cabs[1]}</th>
+                <th>${cabs[2]}</th>
+                <th>${cabs[3]}</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${itensHtml.join("\n")}
+        </tbody>
+        </table>`;
+    }
+
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", () => carregarDiv(cervejas))                 
+</script>
+
+</html>

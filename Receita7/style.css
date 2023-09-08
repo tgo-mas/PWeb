@@ -1,0 +1,24 @@
+*{
+    font-family: Arial;
+}
+
+button{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    transition: 0.5s ease;
+}
+
+button:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#cervejasDiv div{
+    background-color: lightgray;
+    text-align: center;
+    width: 500px;
+    margin: 5px auto;
+    padding: 10px 10px;
+    border-radius: 5px;
+}

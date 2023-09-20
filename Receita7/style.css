@@ -14,7 +14,7 @@ button:hover{
     cursor: pointer;
 }
 
-#cervejasDiv div{
+#objetosDiv div{
     background-color: lightgray;
     text-align: center;
     width: 500px;

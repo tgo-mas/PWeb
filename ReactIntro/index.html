@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReactZero</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+
+    <script>
+        ReactDOM.render(
+            React.createElement(
+                "div",
+                null,
+                [
+                    React.createElement(
+                        'h1',
+                        { id: 'my-heading' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'React ',
+                            React.createElement('em', null, 'é muito'),
+                        ),
+                        ' massa!'
+                    ),
+                    React.createElement(
+                        'table',
+                        {
+                            id: 'my-table',
+                            style: { width: "200px", textAlign: "center", fontFamily: "Arial" }
+                        },
+                        [
+                            React.createElement(
+                                'thead',
+                                null,
+                                React.createElement(
+                                    'tr',
+                                    null,
+                                    [
+                                        React.createElement('th', null, 'Name'),
+                                        React.createElement('th', null, 'Style'),
+                                        React.createElement('th', null, 'IBU')
+                                    ]
+                                )
+                            ),
+                            React.createElement(
+                                'tbody',
+                                null,
+                                [
+                                    React.createElement(
+                                        'tr',
+                                        null,
+                                        [
+                                            React.createElement('td', null, 'Desperado'),
+                                            React.createElement('td', null, 'Sour Ale'),
+                                            React.createElement('td', null, '40')
+                                        ]
+                                    ),
+                                    React.createElement(
+                                        'tr',
+                                        null,
+                                        [
+                                            React.createElement('td', null, 'Heineken'),
+                                            React.createElement('td', null, 'Pure Malt'),
+                                            React.createElement('td', null, '66')
+                                        ]
+                                    ),
+                                    React.createElement(
+                                        'tr',
+                                        null,
+                                        [
+                                            React.createElement('td', null, 'Caracu'),
+                                            React.createElement('td', null, 'Black Beer'),
+                                            React.createElement('td', null, '45')
+                                        ]
+                                    ),
+                                ]
+                            )
+                        ])]),
+            document.getElementById('app')
+        );
+    </script>
+</body>
+
+</html>

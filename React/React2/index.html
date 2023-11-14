@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React Babel</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+
+    <script type="text/babel">
+        const bebidas = [
+            {nome: "Heineken",
+            lugar: "Alemanha"},
+            {nome: "Eisenbahn",
+            lugar: "Suíça"},
+            {nome: "Desperados",
+            lugar: "Espanha"}
+        ]
+
+        function TabelaBebidas({bebidas}) {
+            return (
+                <table id="tabela" border="1">
+                    <thead>
+                        <tr><th>Nome</th><th>Lugar</th></tr>
+                    </thead>
+                    <tbody>
+                        {bebidas.map(bebida => <tr><td>{bebida.nome}</td><td>{bebida.lugar}</td></tr>)}
+                    </tbody>
+                </table>
+            );
+        }
+
+        function Cabecalho() {
+            return (
+                <h1>
+                    Minha tabela de bebidas
+                </h1>
+            )
+        }
+
+        function Botao() {
+            return (
+                <button onClick={mostrarTabela}>
+                    Mostrar tabela
+                </button>
+            )
+        }
+
+        function mostrarTabela() {
+            ReactDOM.render(
+                <div>
+                    <Cabecalho />
+                    <TabelaBebidas bebidas={bebidas} />
+                </div>,
+                document.getElementById("app")
+            );
+        }
+
+        ReactDOM.render(
+            <Botao />,
+            document.getElementById("app")
+        );
+
+    </script>
+</body>
+
+</html>
